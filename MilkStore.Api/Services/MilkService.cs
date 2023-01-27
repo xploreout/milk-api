@@ -63,8 +63,14 @@ public class MilkService : IMilkService
 
     public List<string> GetMilkTypes()
     {
-        var unique =  _dbContext.Milks.GroupBy(x => x.Type).Select(x => x.FirstOrDefault());
-        Console.WriteLine(unique.ToList());
-        return (new List<string>() {"almond", "soy"});
+        var unique =  _dbContext.Milks.GroupBy(x => x.Type).Select(x => x.Key).Distinct();
+        
+        return (unique.ToList());
+    }
+
+    public List<Milk> GetMilkByType(string inputType)
+    {
+        var milks = _dbContext.Milks.Where(x => x.Type == inputType);
+        return milks.ToList();
     }
 }

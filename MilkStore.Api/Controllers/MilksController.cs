@@ -90,7 +90,22 @@ public class MilksController: ControllerBase
       try
       {
          var list =  _dbMilkService.GetMilkTypes();
+         Console.WriteLine(list);
          return (list);
+      }
+      catch (Exception e)
+      {
+         throw new Exception(e.Message);
+      }
+   }
+
+   [HttpGet("type/{type}")]
+   public List<Milk> GetMilkByType([FromRoute] string type)
+   {
+      try
+      {
+         var milkByType = _dbMilkService.GetMilkByType(type);
+         return (milkByType);
       }
       catch (Exception e)
       {

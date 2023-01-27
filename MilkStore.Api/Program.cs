@@ -5,6 +5,7 @@ using MilkStore.Api.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
 builder.Services.AddDbContext<DataContext>(options =>
 
     options.UseSqlServer(builder.Configuration.GetConnectionString("DataContext") ??
@@ -24,6 +25,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(builder =>
+{
+    builder
+        .AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+});
 
 app.UseHttpsRedirection();
 

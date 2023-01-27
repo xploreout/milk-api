@@ -11,4 +11,5 @@ public interface IMilkService
     Task RemoveMilkById(Guid id);
     Task UpdateMilk(Guid id, MilkDto milkDto);
     List<string> GetMilkTypes();
+    List<Milk> GetMilkByType(string type);
 }
