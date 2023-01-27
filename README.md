@@ -1,3 +1,3 @@
 ## Milk Store Api backend with ASP.NET/WebApi and SQL
 
-![swagger](swagger.jpg)
+![swagger](swagger1.jpg)
